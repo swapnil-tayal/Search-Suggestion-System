@@ -50,7 +50,7 @@ void insert(Trie *node, char *word) {
 void suggestion(Trie *node, char *searchword, int k, int n) {
     
     if(node->isEnd){
-        printf("%s ", node->text);
+        printf("%s\n", node->text);
     }
 
     for(int i=0;i<NUM_CHAR;i++){
