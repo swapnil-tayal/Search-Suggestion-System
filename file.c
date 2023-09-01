@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <string.h>
-#include "trie.c"
+#include "trie.h"
 #define NUM_CHAR 26
 
 
@@ -25,7 +25,7 @@ int main(){
     }
     
     char searchWord[100];
-
+    printf("Enter the Seach Word ");
     scanf("%s", searchWord);
 
     Trie *root = createTrie();
@@ -40,7 +40,7 @@ int main(){
 
     for(int i=0;i<search_len;i++) {
         str[k++] = searchWord[i];
-        printf("%s- ", str);
+        printf("Words with prefix %s\n", str);
         suggestion(root, searchWord, 0, i);
         printf("\n");
     }
