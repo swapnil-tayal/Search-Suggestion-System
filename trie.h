@@ -5,7 +5,7 @@
 #include <string.h>
 #define NUM_CHAR 26
 
-
+// intializaing trie structure
 typedef struct Trie{
 
     struct Trie *links[NUM_CHAR];
@@ -14,6 +14,7 @@ typedef struct Trie{
 
 } Trie;
 
+// constructor
 Trie* createTrie() {
     
     Trie *node = (Trie *)malloc(sizeof(Trie));
@@ -26,6 +27,7 @@ Trie* createTrie() {
     return node;
 }
 
+// insert in trie
 void insert(Trie *node, char *word) {
     
     int length = strlen(word);
@@ -47,10 +49,19 @@ void insert(Trie *node, char *word) {
     temp->text = word;
 }
 
+// search suggestion 
 void suggestion(Trie *node, char *searchword, int k, int n) {
     
     if(node->isEnd){
-        printf("%s\n", node->text);
+
+        printf("|");
+        int spaces = (38 - (strlen(node->text)))/2;
+        for(int j=0; j<spaces; j++) printf(" ");
+
+        printf("%s", node->text);
+
+        for(int j=0; j< 38 - (spaces + strlen(node->text)); j++) printf(" ");
+        printf("|\n");
     }
 
     for(int i=0;i<NUM_CHAR;i++){
